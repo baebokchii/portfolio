@@ -1,4 +1,4 @@
-# Project 1 – SQL-Based Exploratory Data Analysis on Olist E-Commerce
+# SQL-Based Exploratory Data Analysis on Olist E-Commerce
 
 ## Objective
 
