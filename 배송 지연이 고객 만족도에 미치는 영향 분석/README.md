@@ -69,7 +69,6 @@ SQL 뷰 및 분석용 테이블을 활용하여 이를 해결하였습니다.
 
 ## 사용 기술
 - SQL (MySQL)
-- Python (Pandas, Matplotlib)
 - DBeaver
 - Tableau
 
