@@ -1,0 +1,84 @@
+CREATE VIEW `raw data`.v_analysis_base AS
+WITH
+orders_base AS (
+SELECT
+	o.order_id,
+	o.customer_id,
+	CASE
+		WHEN NULLIF(o.order_delivered_customer_date, '') IS NULL THEN NULL
+		WHEN LENGTH(NULLIF(o.order_delivered_customer_date, '')) = 10
+        THEN STR_TO_DATE(NULLIF(o.order_delivered_customer_date, ''), '%Y-%m-%d')
+		ELSE STR_TO_DATE(REPLACE(NULLIF(o.order_delivered_customer_date, ''), 'T', ' '), '%Y-%m-%d %H:%i:%s')
+	END AS delivered_customer_dt,
+	CASE
+		WHEN NULLIF(o.order_estimated_delivery_date, '') IS NULL THEN NULL
+		WHEN LENGTH(NULLIF(o.order_estimated_delivery_date, '')) = 10
+        THEN STR_TO_DATE(NULLIF(o.order_estimated_delivery_date, ''), '%Y-%m-%d')
+		ELSE STR_TO_DATE(REPLACE(NULLIF(o.order_estimated_delivery_date, ''), 'T', ' '), '%Y-%m-%d %H:%i:%s')
+	END AS estimated_delivery_dt
+FROM
+	`raw data`.olist_orders_dataset o
+),
+orders_delay AS (
+SELECT
+	ob.order_id,
+	ob.customer_id,
+	CASE
+		WHEN ob.delivered_customer_dt IS NULL THEN NULL
+		WHEN ob.estimated_delivery_dt IS NULL THEN NULL
+		WHEN ob.delivered_customer_dt > ob.estimated_delivery_dt THEN 1
+		ELSE 0
+	END AS is_delayed,
+	CASE
+		WHEN ob.delivered_customer_dt IS NULL THEN NULL
+		WHEN ob.estimated_delivery_dt IS NULL THEN NULL
+		ELSE DATEDIFF(ob.delivered_customer_dt, ob.estimated_delivery_dt)
+	END AS delay_days
+FROM
+	orders_base ob
+WHERE
+	ob.delivered_customer_dt IS NOT NULL
+	AND ob.estimated_delivery_dt IS NOT NULL
+),
+review_one AS (
+SELECT
+	r.order_id,
+	r.review_score
+FROM
+	`raw data`.olist_order_reviews_dataset r
+JOIN (
+	SELECT
+		order_id,
+		MAX(review_creation_date) AS max_review_creation_date
+	FROM
+		`raw data`.olist_order_reviews_dataset
+	GROUP BY
+		order_id
+  ) x
+    ON
+	r.order_id = x.order_id
+	AND r.review_creation_date = x.max_review_creation_date
+),
+customer_region AS (
+SELECT
+	c.customer_id,
+	c.customer_state,
+	c.customer_city
+FROM
+	`raw data`.olist_customers_dataset c
+)
+SELECT
+	d.order_id,
+	d.is_delayed,
+	d.delay_days,
+	cr.customer_state,
+	cr.customer_city,
+	rv.review_score
+FROM
+	orders_delay d
+JOIN customer_region cr
+  ON
+	d.customer_id = cr.customer_id
+LEFT JOIN review_one rv
+  ON
+	d.order_id = rv.order_id;
