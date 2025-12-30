@@ -15,30 +15,12 @@ WITH
           NULLIF(o.order_delivered_customer_date, ''),
           '%Y-%m-%d'
         )
-        ELSE STR_TO_DATE(
-          REPLACE
-            (
-              NULLIF(o.order_delivered_customer_date, ''),
-              'T',
-              ' '
-            ),
-            '%Y-%m-%d %H:%i:%s'
-        )
       END AS delivered_customer_dt,
       CASE
         WHEN NULLIF(o.order_estimated_delivery_date, '') IS NULL THEN NULL
         WHEN LENGTH(NULLIF(o.order_estimated_delivery_date, '')) = 10 THEN STR_TO_DATE(
           NULLIF(o.order_estimated_delivery_date, ''),
           '%Y-%m-%d'
-        )
-        ELSE STR_TO_DATE(
-          REPLACE
-            (
-              NULLIF(o.order_estimated_delivery_date, ''),
-              'T',
-              ' '
-            ),
-            '%Y-%m-%d %H:%i:%s'
         )
       END AS estimated_delivery_dt
     FROM
