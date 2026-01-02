@@ -1,0 +1,4 @@
+Tableau Public Dashboard Link
+
+배송 지연과 고객 경험의 관계 분석 대시보드
+https://public.tableau.com/views/_17673205696980/sheet0
