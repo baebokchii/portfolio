@@ -34,16 +34,6 @@ Kaggle 환경과 Google AI Studio를 활용하여
 프롬프트 설계와 에이전트 동작 로직을 실습 중심으로 구현하였으며,
 에이전트 구조와 자동화 흐름에 대한 이해를 강화하였습니다.
 
-사용 도구
-Kaggle
-Google AI Studio
-Google Cloud Console
-
-핵심 내용
-- AI Agent 구조 및 실행 흐름 이해
-- Prompt Engineering 실습
-- Google Cloud 기반 실행 환경 구성
-
 ### 3. Google SERP 기반 커뮤니티 서비스 홍보 프로젝트
 
 [프로젝트 보기](./google_serp_marketing)
