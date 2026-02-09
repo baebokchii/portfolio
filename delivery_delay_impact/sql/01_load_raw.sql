@@ -1,12 +1,12 @@
--- 원천 CSV를 raw 스키마로 적재.
--- 사용 전 경로를 로컬 CSV 절대 경로로 교체.
+-- Load source CSV files into the raw schema.
+-- Replace file paths with your local absolute CSV paths before running.
 USE olist_portfolio;
 
--- 세션 환경을 단순화해 로딩 오류를 줄임.
+-- Simplify session settings to reduce load-time errors.
 SET SESSION sql_mode = '';
 SET SESSION time_zone = '+00:00';
 
--- 주문/배송 관련 테이블 적재.
+-- Load order and delivery related tables.
 LOAD DATA LOCAL INFILE '/ABSOLUTE_PATH/olist_orders_dataset.csv'
 INTO TABLE raw.olist_orders
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
@@ -35,7 +35,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (review_id, order_id, review_score, review_comment_title, review_comment_message, review_creation_date, review_answer_timestamp);
 
--- 고객/판매자 마스터 적재.
+-- Load customer and seller master tables.
 LOAD DATA LOCAL INFILE '/ABSOLUTE_PATH/olist_customers_dataset.csv'
 INTO TABLE raw.olist_customers
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
@@ -50,7 +50,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (seller_id, seller_zip_code_prefix, seller_city, seller_state);
 
--- 상품/카테고리 정보 적재.
+-- Load product and category data.
 LOAD DATA LOCAL INFILE '/ABSOLUTE_PATH/olist_products_dataset.csv'
 INTO TABLE raw.olist_products
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'
@@ -58,7 +58,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (product_id, product_category_name, product_name_lenght, product_description_lenght, product_photos_qty, product_weight_g, product_length_cm, product_height_cm, product_width_cm);
 
--- 지리 정보 및 카테고리 번역 테이블 적재.
+-- Load geolocation and category translation tables.
 LOAD DATA LOCAL INFILE '/ABSOLUTE_PATH/olist_geolocation_dataset.csv'
 INTO TABLE raw.olist_geolocation
 FIELDS TERMINATED BY ',' ENCLOSED BY '"'

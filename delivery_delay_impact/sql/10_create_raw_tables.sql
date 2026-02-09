@@ -1,7 +1,7 @@
--- raw 스키마 테이블 정의.
+-- Define tables in the raw schema.
 USE olist_portfolio;
 
--- Collision을 방지하기 위해 기존 객체가 있다면 삭제.
+-- Drop existing objects first to avoid collisions.
 DROP TABLE IF EXISTS raw.product_category_name_translation;
 DROP TABLE IF EXISTS raw.olist_geolocation;
 DROP TABLE IF EXISTS raw.olist_products;
@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS raw.olist_order_payments;
 DROP TABLE IF EXISTS raw.olist_order_items;
 DROP TABLE IF EXISTS raw.olist_orders;
 
--- 주문/배송 관련 테이블 생성.
+-- Create order and delivery related tables.
 CREATE TABLE raw.olist_orders (
   order_id VARCHAR(64) NOT NULL,
   customer_id VARCHAR(64) NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE raw.olist_order_reviews (
   KEY idx_reviews_score (review_score)
 ) ENGINE=InnoDB;
 
--- 고객/판매자 마스터 테이블 생성.
+-- Create customer and seller master tables.
 CREATE TABLE raw.olist_customers (
   customer_id VARCHAR(64) NOT NULL,
   customer_unique_id VARCHAR(64) NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE raw.olist_sellers (
   KEY idx_sellers_state (seller_state)
 ) ENGINE=InnoDB;
 
--- 상품/카테고리 테이블 생성.
+-- Create product and category tables.
 CREATE TABLE raw.olist_products (
   product_id VARCHAR(64) NOT NULL,
   product_category_name VARCHAR(255) NULL,
@@ -102,7 +102,7 @@ CREATE TABLE raw.olist_products (
   KEY idx_products_category (product_category_name)
 ) ENGINE=InnoDB;
 
--- 지리 정보 테이블 생성.
+-- Create geolocation table.
 CREATE TABLE raw.olist_geolocation (
   geolocation_id BIGINT NOT NULL AUTO_INCREMENT,
   geolocation_zip_code_prefix INT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE raw.olist_geolocation (
   KEY idx_geo_state (geolocation_state)
 ) ENGINE=InnoDB;
 
--- 카테고리 번역 테이블 생성.
+-- Create category translation table.
 CREATE TABLE raw.product_category_name_translation (
   product_category_name VARCHAR(255) NOT NULL,
   product_category_name_english VARCHAR(255) NULL,

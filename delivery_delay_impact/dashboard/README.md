@@ -1,22 +1,22 @@
 # Dashboard
 
-Tableau로 제작한 대시보드 산출물을 보관합니다.
+This folder stores dashboard deliverables created in Tableau.
 
-## 대시보드 개요
-**주제:** 배송 지연이 고객 평점에 미치는 영향과 개선 우선순위 진단
+## Dashboard Overview
+**Topic:** How delivery delays influence customer ratings and where operations should prioritize improvements.
 
-## 주요 화면 구성
-- **KPI 카드**: 평균 지연율, 평균 평점 저조율(저평점 비율), 평균 평점, 평균 배송 오차(일)
-- **월별 추이 라인**: 지연율/저평점 비율의 월별 변화
-- **가격×배송비 히트맵**: 가격대·배송비 구간별 지연/저평점 패턴
-- **지연 구간별 영향**: 지연 일수 구간별 저평점 비율과 평균 평점 변화
-- **개선 점수 상위 10개 주**: 지역별 개선 우선순위(지도 시각화)
+## Main Views
+- **KPI Cards**: average delay rate, low-rating rate, average rating, average delivery slip (days)
+- **Monthly Trend Lines**: month-over-month movement in delay rate and low-rating rate
+- **Price x Freight Heatmap**: delay/low-rating patterns by price and shipping-fee bands
+- **Delay Bucket Impact**: rating degradation by delay duration buckets
+- **Top 10 States by Improvement Score**: region-level improvement priorities (map view)
 
-## 해석 포인트
-- 지연이 발생할수록 저평점 비율이 상승하는 경향이 뚜렷함
-- 특정 가격·배송비 구간에서 지연 리스크가 집중됨
-- 개선 점수가 높은 주(지역)를 우선적으로 운영 개선 대상으로 설정 가능
+## Interpretation Notes
+- Low-rating risk clearly increases as delay duration grows.
+- Delay risk concentrates in specific price/freight bands.
+- States with high improvement scores are strong candidates for operational intervention.
 
-## 포함 파일
-- 대시보드 이미지 캡처
-- Tableau 워크북 파일 (`.twb` / `.twbx`)
+## Included Files
+- Dashboard image captures
+- Tableau workbook files (`.twb` / `.twbx`)

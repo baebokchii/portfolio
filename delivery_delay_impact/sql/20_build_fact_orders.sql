@@ -1,7 +1,7 @@
--- 주문 분석용 마트/팩트 테이블 생성.
+-- Build mart/fact tables for order analysis.
 USE olist_portfolio;
 
--- 주문 아이템 집계 테이블 생성.
+-- Build aggregated order-item table.
 DROP TABLE IF EXISTS marts.orders_items_agg;
 CREATE TABLE marts.orders_items_agg AS
 SELECT
@@ -14,7 +14,7 @@ SELECT
 FROM raw.olist_order_items oi
 GROUP BY oi.order_id;
 
--- 주문 대표 카테고리 집계 테이블 생성.
+-- Build primary-category aggregation table by order.
 DROP TABLE IF EXISTS marts.orders_category_agg;
 CREATE TABLE marts.orders_category_agg AS
 SELECT
@@ -34,7 +34,7 @@ LEFT JOIN raw.product_category_name_translation t
   ON t.product_category_name = p.product_category_name
 GROUP BY oi.order_id;
 
--- 결제 집계 테이블 생성.
+-- Build payment aggregation table.
 DROP TABLE IF EXISTS marts.orders_payments_agg;
 CREATE TABLE marts.orders_payments_agg AS
 SELECT
@@ -49,7 +49,7 @@ SELECT
 FROM raw.olist_order_payments op
 GROUP BY op.order_id;
 
--- 리뷰 집계 테이블 생성.
+-- Build review aggregation table.
 DROP TABLE IF EXISTS marts.orders_reviews_agg;
 CREATE TABLE marts.orders_reviews_agg AS
 SELECT
@@ -61,11 +61,11 @@ SELECT
 FROM raw.olist_order_reviews r
 GROUP BY r.order_id;
 
--- 주문 팩트 테이블 생성.
+-- Create order-level fact table.
 DROP TABLE IF EXISTS marts.fact_orders;
 CREATE TABLE marts.fact_orders AS
 WITH orders_clean AS (
-  -- 이상치 날짜를 NULL로 정규화해 리드타임 계산 오류를 방지.
+  -- Normalize outlier dates to NULL to prevent lead-time calculation errors.
   SELECT
     o.order_id,
     o.customer_id,
@@ -77,7 +77,7 @@ WITH orders_clean AS (
     CASE WHEN o.order_estimated_delivery_date < '2000-01-01' THEN NULL ELSE o.order_estimated_delivery_date END AS estimated_delivery_ts
   FROM raw.olist_orders o
 )
--- 주문 단위로 고객/결제/리뷰/아이템/카테고리 정보를 결합.
+-- Join customer/payment/review/item/category data at order level.
 SELECT
   oc.order_id,
   oc.customer_id,
@@ -90,13 +90,13 @@ SELECT
   oc.delivered_carrier_ts,
   oc.delivered_customer_ts,
   oc.estimated_delivery_ts,
-  -- 주문 아이템 요약 지표 연결.
+  -- Attach summarized order-item metrics.
   ia.item_count,
   ia.product_count,
   ia.seller_count,
   ia.price_total,
   ia.freight_total,
-  -- 대표 카테고리/결제/리뷰 요약 지표 연결.
+  -- Attach primary-category/payment/review summary metrics.
   ca.category_main,
   pa.payment_value_total,
   pa.installments_max,
@@ -105,22 +105,22 @@ SELECT
   ra.review_score_max,
   ra.low_rating_cnt,
   ra.review_comment_len_max,
-  -- 구매~배송 리드타임(일) 계산.
+  -- Calculate purchase-to-delivery lead time (days).
   CASE
     WHEN oc.purchase_ts IS NULL OR oc.delivered_customer_ts IS NULL THEN NULL
     ELSE DATEDIFF(oc.delivered_customer_ts, oc.purchase_ts)
   END AS lead_time_days,
-  -- 승인~배송 소요(일) 계산.
+  -- Calculate approval-to-delivery lead time (days).
   CASE
     WHEN oc.approved_ts IS NULL OR oc.delivered_customer_ts IS NULL THEN NULL
     ELSE DATEDIFF(oc.delivered_customer_ts, oc.approved_ts)
   END AS ship_time_days,
-  -- 예상 대비 지연(일) 계산. (+면 지연, -면 조기)
+  -- Calculate delay vs estimate (days). (+ = delayed, - = early).
   CASE
     WHEN oc.delivered_customer_ts IS NULL OR oc.estimated_delivery_ts IS NULL THEN NULL
     ELSE DATEDIFF(oc.delivered_customer_ts, oc.estimated_delivery_ts)
   END AS promise_slip_days,
-  -- 지연/정시/조기 플래그 산출.
+  -- Derive delayed/on-time/early flags.
   CASE
     WHEN oc.delivered_customer_ts IS NULL OR oc.estimated_delivery_ts IS NULL THEN NULL
     WHEN DATEDIFF(oc.delivered_customer_ts, oc.estimated_delivery_ts) > 0 THEN 1
@@ -136,7 +136,7 @@ SELECT
     WHEN DATEDIFF(oc.delivered_customer_ts, oc.estimated_delivery_ts) < 0 THEN 1
     ELSE 0
   END AS early_flag,
-  -- 취소/배송불가 주문 플래그 산출.
+  -- Derive canceled/unavailable order flag.
   CASE
     WHEN oc.order_status IN ('canceled','unavailable') THEN 1
     ELSE 0

@@ -1,9 +1,9 @@
--- 배송 지연과 리뷰 평점의 관계를 요약.
--- 지연 구간별로 주문 수, 평균 평점, 저평점 비율을 함께 비교.
+-- Summarize the relationship between delivery delay and review ratings.
+-- Compare order counts, average ratings, and low-rating rates by delay bucket.
 USE olist_portfolio;
 
--- 지연 구간(slip_bin) 기준으로 핵심 지표를 집계.
--- 분석 대상은 리뷰와 지연일이 모두 존재하고, 실패 주문을 제외한 건임.
+-- Aggregate key metrics by delay bucket (slip_bin).
+-- Include only records with both review and delay data, excluding failed orders.
 SELECT
   slip_bin,
   COUNT(*) AS orders_cnt,

@@ -1,9 +1,9 @@
--- analytics 뷰 생성.
--- 복잡한 로직 재작성으로 정의가 흔들리는 문제를 막고 소비 계층을 단순화함.
+-- Create analytics views.
+-- Prevent metric drift from reimplemented logic and simplify downstream consumption.
 USE olist_portfolio;
 
--- 분석 기본 뷰 생성.
--- fact_orders의 핵심 컬럼과 파생 플래그를 그대로 노출해 재사용성을 높임.
+-- Create base analysis view.
+-- Expose core fact_orders columns and derived flags for reuse.
 DROP VIEW IF EXISTS analytics.v_orders_base;
 CREATE VIEW analytics.v_orders_base AS
 SELECT
@@ -26,22 +26,22 @@ SELECT
   freight_total,
   payment_value_total,
   review_score_avg,
-  -- 평균 리뷰가 2 이하이면 저평점으로 분류함.
+  -- Classify ratings <= 2 as low ratings.
   CASE WHEN review_score_avg IS NULL THEN NULL
        WHEN review_score_avg <= 2 THEN 1 ELSE 0 END AS low_rating_flag,
-  -- 월 단위 집계를 위한 구매 월 컬럼 생성함.
+  -- Create purchase-month column for monthly aggregation.
   DATE_FORMAT(purchase_ts, '%Y-%m-01') AS purchase_month
 FROM marts.fact_orders;
 
--- 지연 일수 구간화를 위한 뷰 생성.
--- 분석에서 동일한 구간 정의를 쓰기 위해 slip_bin을 표준화함.
+-- Create view for delay-day bucketing.
+-- Standardize slip_bin so all analyses use the same bucket definitions.
 DROP VIEW IF EXISTS analytics.v_delay_bins;
 CREATE VIEW analytics.v_delay_bins AS
 SELECT
   *,
   CASE
     WHEN promise_slip_days IS NULL THEN NULL
-    -- 0 이하는 정시/조기로 묶음.
+    -- Group values <= 0 into on_time_or_early.
     WHEN promise_slip_days <= 0 THEN 'on_time_or_early'
     WHEN promise_slip_days = 1 THEN 'late_1'
     WHEN promise_slip_days = 2 THEN 'late_2'
@@ -50,8 +50,8 @@ SELECT
   END AS slip_bin
 FROM analytics.v_orders_base;
 
--- Segment 분석용 베이스 뷰 생성.
--- 가격/배송비 구간과 핵심 타깃 지표를 함께 제공함.
+-- Create base view for segment analysis.
+-- Provide price/freight bands together with core target metrics.
 DROP VIEW IF EXISTS analytics.v_segment_base;
 CREATE VIEW analytics.v_segment_base AS
 SELECT
@@ -60,7 +60,7 @@ SELECT
   category_main,
   CASE
     WHEN price_total IS NULL THEN NULL
-    -- 주문 금액 구간화를 통해 가격대별 비교가 가능함.
+    -- Bucket order value to enable price-band comparisons.
     WHEN price_total < 50 THEN 'p_0_50'
     WHEN price_total < 100 THEN 'p_50_100'
     WHEN price_total < 200 THEN 'p_100_200'
@@ -69,7 +69,7 @@ SELECT
   END AS price_band,
   CASE
     WHEN freight_total IS NULL THEN NULL
-    -- 배송비 구간화를 통해 물류비 영향 비교가 가능함.
+    -- Bucket freight value to compare shipping-cost impact.
     WHEN freight_total < 20 THEN 'f_0_20'
     WHEN freight_total < 40 THEN 'f_20_40'
     WHEN freight_total < 80 THEN 'f_40_80'
@@ -80,5 +80,5 @@ SELECT
   low_rating_flag,
   promise_slip_days
 FROM analytics.v_orders_base
--- 실패 주문은 제외해 분석 일관성을 유지함.
+-- Exclude failed orders to maintain analysis consistency.
 WHERE failed_order_flag = 0;
