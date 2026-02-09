@@ -8,7 +8,7 @@ Across real-world projects, I cover the full analysis lifecycle: problem framing
 
 ### 1. Delivery Delay Impact on Customer Satisfaction (E-commerce)
 
-[View project]((https://github.com/baebokchii/delivery_delay_impact))
+[View project](https://github.com/baebokchii/delivery_delay_impact)
 
 This project analyzes how delivery delays and delay duration affect customer satisfaction using e-commerce order data.
 
