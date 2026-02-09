@@ -18,7 +18,7 @@ The final output highlights region- and category-level operational priorities th
 
 ### 2. Google SERP Marketing for Community Services (Hong Kong)
 
-[View project](./google_serp_marketing)
+[View project](https://github.com/baebokchii/google_serp_marketing)
 
 This project evaluates the promotion performance of three community services using Google Search (SERP) and Google Ads campaign data in Hong Kong.
 
@@ -26,7 +26,7 @@ It combines SEO-oriented keyword planning with ad copy A/B testing to identify h
 
 ### 3. AI Agent Design and Implementation (Google)
 
-[View project](./ai_agent_course)
+[View project](https://github.com/baebokchii/ai_agent_course)
 
 Based on Google's hands-on curriculum, this project demonstrates practical AI agent design patterns and execution workflows.
 
