@@ -1,48 +1,36 @@
-# Portfolio – 배현진 (Hyounjin Bae)
+# Portfolio – Hyounjin Bae
 
-데이터를 정리하고 분석하여 문제를 구조화하고 의사결정에 도움이 되는 인사이트를 도출하는 데이터 분석가를 목표로 삼고 있습니다. 
+I am a data analyst focused on turning messy data into structured business decisions.
 
-실제 데이터와 프로젝트를 통해 문제 정의부터 분석, 결과 해석까지 전체 분석 흐름을 설계하고 구현해왔습니다.
+Across real-world projects, I cover the full analysis lifecycle: problem framing, metric design, data modeling, analysis, and actionable recommendations.
 
 ## Projects
 
-### 1. 배송 지연이 고객 만족도에 미치는 영향 분석
+### 1. Delivery Delay Impact on Customer Satisfaction (E-commerce)
 
-[프로젝트 보기](./delivery_delay_impact)
+[View project](./delivery_delay_impact)
 
-이커머스 주문 데이터를 활용하여
-배송 지연 여부 및 지연 기간이
-고객 만족도에 미치는 영향을 분석한 프로젝트입니다.
+This project analyzes how delivery delays and delay duration affect customer satisfaction using e-commerce order data.
 
-SQL을 통해 분석용 데이터 구조를 설계하고,
-Tableau 대시보드를 활용하여
-배송 성과와 고객 경험 간의 관계를 시각적으로 표현하였습니다.
+I designed SQL-based analytical data models and built BI-ready outputs to visualize the relationship between logistics performance and customer experience.
 
-분석 결과를 바탕으로
-지역별 배송 지연 패턴과
-운영 개선에 활용 가능한 인사이트를 도출하였습니다.
+The final output highlights region- and category-level operational priorities that can reduce low ratings and improve service quality.
 
-### 2. Google SERP 기반 커뮤니티 서비스 홍보 프로젝트
+### 2. Google SERP Marketing for Community Services (Hong Kong)
 
-[프로젝트 보기](./google_serp_marketing)
+[View project](./google_serp_marketing)
 
-Google 검색 결과(SERP)와 Google Ads 성과 데이터를 활용해
-커뮤니티 서비스 3종의 홍보 효과를 분석한 프로젝트입니다.
+This project evaluates the promotion performance of three community services using Google Search (SERP) and Google Ads campaign data in Hong Kong.
 
-SEO 관점의 키워드 설계와 광고 카피 A/B 테스트를 통해
-서비스 유형별 클릭 반응과 개선 방향을 도출했습니다.
+It combines SEO-oriented keyword planning with ad copy A/B testing to identify high-intent traffic patterns and improvement opportunities by service type and language.
 
-### 3. AI Agent 설계 및 구현 프로젝트 (Google)
+### 3. AI Agent Design and Implementation (Google)
 
-[프로젝트 보기](./ai_agent_course)
+[View project](./ai_agent_course)
 
-Google에서 제공한 실습 중심 커리큘럼을 기반으로
-AI Agent의 설계 구조와 실행 흐름을 이해하고
-직접 구현한 프로젝트입니다.
+Based on Google's hands-on curriculum, this project demonstrates practical AI agent design patterns and execution workflows.
 
-Kaggle 환경과 Google AI Studio를 활용하여
-프롬프트 설계와 에이전트 동작 로직을 실습 중심으로 구현하였으며,
-에이전트 구조와 자동화 흐름에 대한 이해를 강화하였습니다.
+Using Kaggle and Google AI Studio, I implemented prompt strategies and agent logic to strengthen my understanding of agent architecture and automation.
 
 ## Contact
 
