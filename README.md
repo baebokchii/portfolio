@@ -1,10 +1,10 @@
-# Portfolio – Hyounjin Bae
+# 📁 Portfolio – Hyounjin Bae
 
 I am a data analyst focused on turning messy data into structured business decisions.
 
 Across real-world projects, I cover the full analysis lifecycle: problem framing, metric design, data modeling, analysis, and actionable recommendations.
 
-## Projects
+## 🚀 Projects
 
 ### 1. Delivery Delay Impact on Customer Satisfaction (E-commerce)
 
@@ -32,7 +32,7 @@ Based on Google's hands-on curriculum, this project demonstrates practical AI ag
 
 Using Kaggle and Google AI Studio, I implemented prompt strategies and agent logic to strengthen my understanding of agent architecture and automation.
 
-## Contact
+## 📬 Contact
 
 <a href="mailto:alexbaehj@gmail.com">Email</a>
 

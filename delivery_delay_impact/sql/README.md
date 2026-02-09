@@ -1,8 +1,8 @@
-# SQL Pipeline Guide
+# 🛠️ SQL Pipeline Guide
 
 This folder contains the SQL pipeline for building reproducible analytics outputs.
 
-## Execution Order
+## ▶️ Execution Order
 1. `sql/00_init.sql` - initialize database and schemas
 2. `sql/10_create_raw_tables.sql` - create raw ingest tables
 3. `sql/01_load_raw.sql` - load source CSV data
@@ -14,7 +14,7 @@ This folder contains the SQL pipeline for building reproducible analytics output
 9. `sql/50_priority_scoring.sql` - score improvement opportunities by segment
 10. `sql/51_priority_views.sql` - create dashboard-ready priority views
 
-## Result Objects
+## 🧾 Result Objects
 - `raw.*` - source CSV tables
 - `marts.fact_orders` - order-level fact table
 - `analytics.v_orders_base` - reusable order analysis base
@@ -23,6 +23,6 @@ This folder contains the SQL pipeline for building reproducible analytics output
 - `analytics.segment_priority` - improvement scoring table
 - `analytics.v_priority_*` - sorted priority views for reporting
 
-## Exporting CSV
+## 📤 Exporting CSV
 Export SELECT outputs from your SQL client and store them under `results/`.
 (Example: MySQL Workbench export or `INTO OUTFILE`.)

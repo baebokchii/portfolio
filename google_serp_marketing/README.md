@@ -1,4 +1,4 @@
-# Google SERP Community Service Marketing Project
+# 🔍 Google SERP Community Service Marketing Project
 
 This project was designed to improve the Google Search (SERP) visibility of three key services run by the Sai Kung District Community Centre (SKDCC) in Hong Kong.
 
