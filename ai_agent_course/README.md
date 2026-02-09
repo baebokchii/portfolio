@@ -1,4 +1,4 @@
-# Travel Concierge Multi-Agent System
+# ✈️ Travel Concierge Multi-Agent System
 
 *Fully Automated Travel Research + Itinerary Planning + Budget Estimation*
 *Built for the Kaggle x Google 5-Day Agents Intensive Capstone Project*

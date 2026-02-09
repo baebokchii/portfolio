@@ -1,8 +1,8 @@
-# Data Dictionary
+# 📚 Data Dictionary
 
 This project centers on an order-level fact table: `marts.fact_orders`.
 
-## marts.fact_orders
+## 🗂️ marts.fact_orders
 | Column | Description |
 | --- | --- |
 | `order_id` | Order ID |
@@ -37,19 +37,19 @@ This project centers on an order-level fact table: `marts.fact_orders`.
 | `early_flag` | Early delivery flag |
 | `failed_order_flag` | Canceled/unavailable order flag |
 
-## analytics.v_orders_base
+## 🧪 analytics.v_orders_base
 | Column | Description |
 | --- | --- |
 | `low_rating_flag` | 1 if average review score is 2 or below |
 | `purchase_month` | Purchase month (YYYY-MM-01) |
 
-## analytics.v_segment_base
+## 🧪 analytics.v_segment_base
 | Column | Description |
 | --- | --- |
 | `price_band` | Price range band |
 | `freight_band` | Freight cost range band |
 
-## analytics.segment_priority
+## 🧮 analytics.segment_priority
 | Column | Description |
 | --- | --- |
 | `orders_cnt` | Segment order count |

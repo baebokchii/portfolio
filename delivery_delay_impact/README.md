@@ -1,19 +1,19 @@
-# Olist Delivery Delay Impact Analysis
+# 📦 Olist Delivery Delay Impact Analysis
 
 This portfolio project quantifies how delivery promise adherence (estimated date vs actual delivery date) affects customer satisfaction and identifies high-priority improvement areas. The project follows a clear analytics workflow: **problem definition -> metric design -> reproducible pipeline -> action-oriented insights**.
 
-## Project Snapshot
+## 🔎 Project Snapshot
 - Objective: Measure the impact of delivery delays on ratings/low-rating risk and propose priority segments for improvement.
 - Data: Olist Brazilian E-Commerce Public Dataset (Kaggle)
 - Scope: Orders with both estimated and actual delivery dates; canceled/unavailable orders excluded.
 - Stack: MySQL 8, SQL, Tableau (or equivalent BI tools)
 - Outputs: `marts.fact_orders`, `analytics` views, priority scoring tables, and `results/` CSV exports
 
-## Business Questions
+## ❓ Business Questions
 - How much do delayed deliveries increase the low-rating rate?
 - Which region x category segments should be addressed first to maximize rating recovery?
 
-## Core Metrics
+## 📐 Core Metrics
 | Metric | Definition |
 | --- | --- |
 | `promise_slip_days` | `DATEDIFF(delivered_customer_ts, estimated_delivery_ts)`; positive values indicate delay |
@@ -24,7 +24,7 @@ This portfolio project quantifies how delivery promise adherence (estimated date
 | `failed_order_flag` | 1 if `order_status` in (`canceled`, `unavailable`), else 0 |
 | `opportunity_score` | `low_rating_lift * orders_cnt` (higher = stronger improvement potential) |
 
-## Data Pipeline
+## 🧱 Data Pipeline
 ```text
 raw CSV (raw.*)
   -> marts.fact_orders
@@ -32,7 +32,7 @@ raw CSV (raw.*)
   -> analytics.segment_priority + CSV exports (results/)
 ```
 
-## Tableau ERD (Recommended Data Sources)
+## 📊 Tableau ERD (Recommended Data Sources)
 In Tableau, it is safer to separate **order-level views** and **segment-level views**.
 
 Order-level analysis source:
@@ -50,12 +50,12 @@ analytics.v_priority_impact
 ```
 - `v_priority_*` views differ only in sorting logic, so you can use **one view** and change sort order in worksheets.
 
-## Result Highlights
+## ✨ Result Highlights
 - The largest improvement opportunities are concentrated in high-volume categories in São Paulo (SP).
 - High delay-risk segments are more frequent in RJ/BA across electronics, baby, and telecom-related categories.
 - Some segments show very high low-rating lift when deliveries are delayed.
 
-## Impact Estimation (Potential Low-Rating Reduction)
+## 📉 Impact Estimation (Potential Low-Rating Reduction)
 Assuming delayed orders are converted to on-time delivery, expected low-rating reduction is estimated as:
 `preventable_low_ratings = low_rating_lift * delayed_rate * orders_cnt`
 
