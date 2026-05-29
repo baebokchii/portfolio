@@ -1,6 +1,6 @@
 # 📁 Portfolio – Hyounjin Bae
 
-I am a data analyst focused on turning messy data into structured business decisions.
+I am a data analyst enthusiast focused on turning messy data into structured business decisions.
 
 Across real-world projects, I cover the full analysis lifecycle: problem framing, metric design, data modeling, analysis, and actionable recommendations.
 
