@@ -52,6 +52,7 @@
 
 **Hong Kong University of Science and Technology (홍콩과학기술대학교)**
 BBA in Management, BBA in Information Systems (Double Major), Class of 2025
+
 경영학 학사, 정보시스템 학사 (복수 전공), 2025년 1월 졸업
 
 ---
