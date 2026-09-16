@@ -1,72 +1,60 @@
-# Portfolio – Hyounjin Bae
+# Portfolio – 배현진 (Hyounjin Bae)
 
 [![Email](https://img.shields.io/badge/Email-alexbaehj%40gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:alexbaehj@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-hjbae01-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/hjbae01/)
 
-Data analyst with a focus on translating unstructured data into actionable business decisions.
+데이터 분석가를 지망하는 지원자입니다. 
 
-Each project below follows the full analysis lifecycle: problem framing, metric design, data modeling, analysis, and recommendation.
+각 프로젝트는 문제 정의부터 데이터 수집, 분석, 실행까지 전 과정을 직접 진행했습니다.
 
 ---
 
 ## Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=postgresql&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
-![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=flat&logo=kaggle&logoColor=white)
 ![Google Ads](https://img.shields.io/badge/Google%20Ads-4285F4?style=flat&logo=googleads&logoColor=white)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)
+![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-4285F4?style=flat&logo=google&logoColor=white)
 
 ---
 
 ## Projects
 
-### 1. Seoul Public Bike (따릉이) Demand Forecasting
+### 1. Google SERP 커뮤니티 서비스 마케팅 분석 (홍콩)
 
-[View project](https://github.com/baebokchii/data_project)
+[프로젝트 보기](https://github.com/baebokchii/google_serp_marketing)
 
-An end-to-end machine learning pipeline that predicts city-wide hourly bike rental demand for Seoul's public bike-sharing system, following the CRISP-DM and MLOps lifecycle from business problem definition through held-out test set evaluation.
+홍콩 사이쿵구 커뮤니티센터(SKDCC)가 운영하는 세 가지 서비스(노인 서비스, 비중국어권 학생 지원 서비스, 특수 교육)의 구글 검색 노출을 개선하기 위해 진행한 프로젝트입니다.
 
-Data was collected from two public APIs — Seoul Open Data Plaza (approximately 78,000 paginated API calls, parallelized with multi-threading) and KMA ASOS weather observations — then merged and split chronologically to avoid data leakage.
+광고 집행에서 끝내지 않고 검색 의도 기반 키워드 설계, 광고 카피 A/B 테스트, 캠페인 성과 분석을 하나의 루프로 연결해서 진행했습니다. 분석에는 Google Ads 캠페인 데이터(노출수, 클릭수, CTR, 비용, 키워드/광고그룹별 지표)와 검색 노출 결과를 사용했습니다.
 
-Seven experiments were conducted in order of increasing complexity, incorporating lag features, weather data, and Korean public holiday indicators into a LightGBM model, reducing RMSE by 80.2% relative to the seasonal mean baseline (validation RMSE 3,008 to 596; test RMSE 1,117 on a nine-month held-out set).
+**핵심 결과**
+- 서비스 유형별로 CTR 차이가 뚜렷하게 나타났습니다.
+- SEN 관련 키워드와 광고 카피가 상대적으로 높은 참여율을 보였습니다.
+- ADHD처럼 문제를 이미 인지한 상태에서 검색하는 키워드는 짧은 테스트 기간에도 강한 CTR을 기록했습니다.
+- 중국어와 영어 광고 간 반응 패턴이 서로 다르게 나타났습니다.
 
-### 2. Olist Customer RFM Segmentation (E-commerce)
+자세한 분석 내용은 [insights.md](https://github.com/baebokchii/google_serp_marketing/blob/main/insights.md)에서 확인할 수 있습니다.
 
-[View project](https://github.com/baebokchii/olist-rfm-analysis)
+### 2. 러닝 기록 자동화 대시보드
 
-A SQL analytics project that segments Olist's Brazilian e-commerce customers by Recency, Frequency, and Monetary value, and quantifies the business impact of each segment.
+[프로젝트 보기](https://github.com/baebokchii/RunningLog), [대시보드 보기](https://public.tableau.com/app/profile/hyounjin.bae/viz/RunningLogDashboard/sheet7)
 
-A PostgreSQL pipeline was built from raw Kaggle order data through staging, fact tables, RFM scoring, and segment profiling.
+애플워치에 쌓인 개인 러닝 기록을 구글 시트와 Tableau 대시보드로 자동 업데이트하는 개인 데이터 파이프라인을 구축했습니다.
 
-Key finding: only 3% of customers place a repeat order, yet this segment accounts for 5.6% of total revenue, while `big_spenders` (40% of customers) generate 73.3% of revenue — indicating that retention strategy should be based on spend behavior rather than product category.
-
-### 3. Google SERP Marketing for Community Services (Hong Kong)
-
-[View project](https://github.com/baebokchii/google_serp_marketing)
-
-An evaluation of promotion performance for three community services using Google Search (SERP) and Google Ads campaign data in Hong Kong.
-
-The analysis combines SEO-oriented keyword planning with ad copy A/B testing to identify high-intent traffic patterns and improvement opportunities by service type and language.
-
-### 4. AI Agent Design and Implementation (Google)
-
-[View project](https://github.com/baebokchii/ai_agent_course)
-
-Based on Google's hands-on curriculum, this project demonstrates practical AI agent design patterns and execution workflows.
-
-Using Kaggle and Google AI Studio, prompt strategies and agent logic were implemented to strengthen understanding of agent architecture and automation.
+아이폰 건강 앱에서 내보낸 기록을 launchd가 감지하면 Python 스크립트가 데이터를 정리하고, 구글 시트에 없는 기록만 골라서 업로드합니다. Tableau Public이 구글 시트를 하루 한 번 동기화하는 구조로, 수집부터 시각화까지 전 과정을 직접 설계하고 자동화했습니다.
 
 ---
 
 ## Education
 
-**Hong Kong University of Science and Technology (HKUST)**
-BBA in Management and BBA in Information Systems (Double Major), Class of 2025
+**Hong Kong University of Science and Technology (홍콩과학기술대학교)**
+BBA in Management, BBA in Information Systems (Double Major), Class of 2025
+경영학 학사, 정보시스템 학사 (복수 전공), 2025년 1월 졸업
 
 ---
 
 ## Contact
 
-[Email](mailto:alexbaehj@gmail.com) · [LinkedIn](https://linkedin.com/in/hjbae01/)
+[Email](mailto:alexbaehj@gmail.com), [LinkedIn](https://linkedin.com/in/hjbae01/)
