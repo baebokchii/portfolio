@@ -1,4 +1,4 @@
-# Portfolio – 배현진 (Hyounjin Bae)
+# 배현진의 데이터 분석 포트폴리오
 
 [![Email](https://img.shields.io/badge/Email-alexbaehj%40gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:alexbaehj@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-hjbae01-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/hjbae01/)
