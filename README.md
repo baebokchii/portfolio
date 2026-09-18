@@ -40,7 +40,7 @@
 
 ### 2. 러닝 기록 자동화 대시보드
 
-[프로젝트 보기](https://github.com/baebokchii/RunningLog), [대시보드 보기](https://public.tableau.com/app/profile/hyounjin.bae/viz/RunningLogDashboard/sheet7)
+[프로젝트 보기](https://github.com/baebokchii/RunningLog), [대시보드 보기](https://public.tableau.com/views/RunningLogDashboard/RunningLog)
 
 애플워치에 쌓인 개인 러닝 기록을 구글 시트와 Tableau 대시보드로 자동 업데이트하는 개인 데이터 파이프라인을 구축했습니다.
 
