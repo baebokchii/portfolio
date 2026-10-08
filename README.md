@@ -1,9 +1,7 @@
-# 배현진의 데이터 분석 포트폴리오
+# 배현진의 포트폴리오
 
 [![Email](https://img.shields.io/badge/Email-alexbaehj%40gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:alexbaehj@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-hjbae01-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/hjbae01/)
-
-데이터 분석가를 지망하는 지원자입니다. 
 
 각 프로젝트는 문제 정의부터 데이터 수집, 분석, 실행까지 전 과정을 직접 진행했습니다.
 
