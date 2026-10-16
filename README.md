@@ -15,12 +15,26 @@
 ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)
 ![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-4285F4?style=flat&logo=google&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
 
 ---
 
 ## Projects
 
-### 1. Google SERP 커뮤니티 서비스 마케팅 분석 (홍콩)
+### 1. 서울 카페 2호점 입지 분석
+
+[프로젝트 보기](https://github.com/baebokchii/seoul-cafe-location-analysis), [최종 보고 덱](https://drive.google.com/file/d/1WEL0MKA2sJos8YHkGlb53u34hwMyiLDU/view?usp=sharing)
+
+서울시 상권분석서비스 공공데이터(2021년 1분기 ~ 2026년 2분기)로 "카페 2호점을 서울 어느 상권에 내야 하는가"에 답한 프로젝트입니다. 손님이 2년 동안 꾸준히 늘었는지, 카페 한 곳이 받는 손님이 많은지, 임대료를 감당할 수 있는지를 기준으로 상권 3곳을 추천하고, 그 3곳의 다음 1년 매출과 손님을 예측했습니다.
+
+데이터를 PostgreSQL에 적재한 뒤 CTE와 윈도 함수(`LAG`, `PERCENT_RANK`)로 992개 상권의 추천 지표를 계산했습니다. 상권 하나에는 22개 분기 데이터밖에 없어서 916개 상권을 함께 학습하는 예측 모델을 만들고, 시점을 고정한 백테스트로 계절 단순 예측과 비교해 검증했습니다.
+
+**핵심 결과**
+- 추천 3곳은 공릉역(노원구), 대치역(강남구), 방이역(송파구)입니다. 2년 사이 카페 손님은 25 ~ 50% 늘고 카페 수는 그대로이거나 줄어, 카페 한 곳이 받는 손님이 53 ~ 90% 늘었습니다.
+- 다음 1년 손님은 세 곳 모두 지금 수준을 유지할 것으로 예측했습니다. 매출은 대치역과 방이역이 지금 수준을 유지하고, 공릉역은 객단가가 되돌아갈 위험이 있습니다(−24%).
+- 예측 모델은 916개 상권 전체에서 계절 단순 예측보다 오차(WAPE)가 1 ~ 2%p 낮았습니다. 다만 상권 하나의 1년 뒤 예측은 범위가 넓어서, 숫자보다 방향을 보는 자료로 제시했습니다.
+
+### 2. Google SERP 커뮤니티 서비스 마케팅 분석 (홍콩)
 
 [프로젝트 보기](https://github.com/baebokchii/google_serp_marketing)
 
@@ -36,7 +50,7 @@
 
 자세한 분석 내용은 [insights.md](https://github.com/baebokchii/google_serp_marketing/blob/main/insights.md)에서 확인할 수 있습니다.
 
-### 2. 러닝 기록 자동화 대시보드
+### 3. 러닝 기록 자동화 대시보드
 
 [프로젝트 보기](https://github.com/baebokchii/RunningLog), [대시보드 보기](https://public.tableau.com/views/RunningLogDashboard/RunningLog)
 
