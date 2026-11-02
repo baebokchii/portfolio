@@ -23,7 +23,7 @@
 
 ### 1. 서울 카페 2호점 입지 분석
 
-[프로젝트 보기](https://github.com/baebokchii/seoul-cafe-location-analysis), [최종 보고 덱](https://drive.google.com/file/d/1WEL0MKA2sJos8YHkGlb53u34hwMyiLDU/view?usp=sharing)
+[프로젝트 보기](https://github.com/baebokchii/seoul-cafe-location-analysis), [최종 보고 덱](https://drive.google.com/file/d/1n-jlz8ytddXTOGtbEzjg0yTgr7pecASk/view?usp=sharing)
 
 서울시 상권분석서비스 공공데이터(2021년 1분기 ~ 2026년 2분기)로 "카페 2호점을 서울 어느 상권에 내야 하는가"에 답한 프로젝트입니다. 손님이 2년 동안 꾸준히 늘었는지, 카페 한 곳이 받는 손님이 많은지, 임대료를 감당할 수 있는지를 기준으로 상권 3곳을 추천하고, 그 3곳의 다음 1년 매출과 손님을 예측했습니다.
 
