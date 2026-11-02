@@ -14,8 +14,7 @@
 ![Google Ads](https://img.shields.io/badge/Google%20Ads-4285F4?style=flat&logo=googleads&logoColor=white)
 ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)
 ![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-4285F4?style=flat&logo=google&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?logo=postgresql&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikitlearn&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
 
 ---
 
@@ -23,16 +22,16 @@
 
 ### 1. 서울 카페 2호점 입지 분석
 
-[프로젝트 보기](https://github.com/baebokchii/seoul-cafe-location-analysis), [최종 보고 덱](https://drive.google.com/file/d/1n-jlz8ytddXTOGtbEzjg0yTgr7pecASk/view?usp=sharing)
+[프로젝트 보기](https://github.com/baebokchii/seoul-cafe-location-analysis), [최종 보고 덱](https://github.com/baebokchii/seoul-cafe-location-analysis/blob/main/reports/%EC%B5%9C%EC%A2%85%EB%B3%B4%EA%B3%A0_%EC%B9%B4%ED%8E%982%ED%98%B8%EC%A0%90.pdf)
 
-서울시 상권분석서비스 공공데이터(2021년 1분기 ~ 2026년 2분기)로 "카페 2호점을 서울 어느 상권에 내야 하는가"에 답한 프로젝트입니다. 손님이 2년 동안 꾸준히 늘었는지, 카페 한 곳이 받는 손님이 많은지, 임대료를 감당할 수 있는지를 기준으로 상권 3곳을 추천하고, 그 3곳의 다음 1년 매출과 손님을 예측했습니다.
+서울시 상권분석서비스 공공데이터(2021년 1분기 ~ 2026년 2분기)와 한국부동산원 임대료로 "카페 2호점을 서울 어느 상권에 내야 하는가"에 답한 컨설팅 프로젝트입니다. 문제 정의 → MECE 이슈 트리 → 가설 설정 → 분석 → 피라미드 구조의 보고서 순서로 진행했습니다.
 
-데이터를 PostgreSQL에 적재한 뒤 CTE와 윈도 함수(`LAG`, `PERCENT_RANK`)로 992개 상권의 추천 지표를 계산했습니다. 상권 하나에는 22개 분기 데이터밖에 없어서 916개 상권을 함께 학습하는 예측 모델을 만들고, 시점을 고정한 백테스트로 계절 단순 예측과 비교해 검증했습니다.
+핵심 질문을 수요·경쟁·수익성(매출·임대료)·지속성으로 나누고, 갈래마다 가설을 세워 데이터로 검증했습니다. 데이터를 PostgreSQL에 적재한 뒤 CTE와 윈도 함수(`LAG`)로 992개 상권의 지표를 계산하고, 5단계 거르기와 3개 점수(성장·손님·수익), 임대료 조건으로 후보를 좁혔습니다. 다음 1년 예측은 단순한 규칙 두 개를 과거 세 시점에서 백테스트해 더 정확한 쪽을 썼습니다.
 
 **핵심 결과**
-- 추천 3곳은 공릉역(노원구), 대치역(강남구), 방이역(송파구)입니다. 2년 사이 카페 손님은 25 ~ 50% 늘고 카페 수는 그대로이거나 줄어, 카페 한 곳이 받는 손님이 53 ~ 90% 늘었습니다.
-- 다음 1년 손님은 세 곳 모두 지금 수준을 유지할 것으로 예측했습니다. 매출은 대치역과 방이역이 지금 수준을 유지하고, 공릉역은 객단가가 되돌아갈 위험이 있습니다(−24%).
-- 예측 모델은 916개 상권 전체에서 계절 단순 예측보다 오차(WAPE)가 1 ~ 2%p 낮았습니다. 다만 상권 하나의 1년 뒤 예측은 범위가 넓어서, 숫자보다 방향을 보는 자료로 제시했습니다.
+- 추천 3곳은 대치역(강남구), 방이역(송파구), 천호역(강동구)입니다. 서울 카페 손님이 2년째 정체(−1.8%)인 동안 세 곳의 손님은 24.5 ~ 80.4% 늘었고, 카페 한 곳이 받는 손님도 53.2 ~ 77.1% 늘었습니다.
+- 점수로는 앞섰던 도심 상권 2곳(북창동·북촌)은 임대료가 서울 평균의 1.8배를 넘어 제외했습니다. 추천 3곳의 임대료는 서울 평균의 0.85 ~ 1.22배입니다.
+- 백테스트 6번 모두 "작년 × (1 + 성장률)"보다 "작년과 같음"이 더 정확해(오차율 중앙값 14.9 ~ 17.5%), 세 곳 모두 다음 1년은 현재 수준이 유지될 것으로 예측했습니다. 곳마다 위험(폐점 원인, 가격 경쟁, 낮은 매출)이 달라 계약 전 3개월의 확인 과제를 함께 권고했습니다.
 
 ### 2. Google SERP 커뮤니티 서비스 마케팅 분석 (홍콩)
 
