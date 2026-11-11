@@ -15,6 +15,7 @@
 ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)
 ![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-4285F4?style=flat&logo=google&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white)
 
 ---
 
@@ -22,7 +23,7 @@
 
 ### 1. 서울 카페 2호점 입지 분석
 
-[프로젝트 보기](https://github.com/baebokchii/seoul-cafe-location-analysis), [최종 보고 덱](https://github.com/baebokchii/seoul-cafe-location-analysis/reports/카페2호점_입지분석.pdf)
+[프로젝트 보기](https://github.com/baebokchii/seoul-cafe-location-analysis), [최종 보고 덱](https://github.com/baebokchii/seoul-cafe-location-analysis/blob/main/reports/%EC%B9%B4%ED%8E%982%ED%98%B8%EC%A0%90_%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D.pdf)
 
 서울에서 직장인 대상 테이크아웃 카페 1곳을 운영하는 소규모 브랜드가 2호점을 어디에 내면 좋을지 공개 데이터로 분석했습니다. 핵심 지표는 새 매장이 평균적으로 가져갈 몫인 점포당 매출로 정했습니다. 수요, 경쟁, 비용, 지속성 네 축으로 가설 6개를 세우고 판정 기준은 데이터를 보기 전에 정했습니다.
 
