@@ -3,10 +3,6 @@
 [![Email](https://img.shields.io/badge/Email-alexbaehj%40gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:alexbaehj@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-hjbae01-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/hjbae01/)
 
-각 프로젝트는 문제 정의부터 데이터 수집, 분석, 실행까지 전 과정을 직접 진행했습니다.
-
----
-
 ## Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
@@ -16,6 +12,8 @@
 ![Google Apps Script](https://img.shields.io/badge/Google%20Apps%20Script-4285F4?style=flat&logo=google&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat&logo=jupyter&logoColor=white)
+![Google Gemini](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=flat&logo=googlegemini&logoColor=white)
+![Claude Code](https://img.shields.io/badge/Claude_Code-555?logo=claude)
 
 ---
 
@@ -25,35 +23,33 @@
 
 [프로젝트 보기](https://github.com/baebokchii/seoul-cafe-location-analysis), [최종 보고 덱](https://github.com/baebokchii/seoul-cafe-location-analysis/blob/main/reports/%EC%B9%B4%ED%8E%982%ED%98%B8%EC%A0%90_%EC%9E%85%EC%A7%80%EB%B6%84%EC%84%9D.pdf)
 
-서울에서 직장인 대상 테이크아웃 카페 1곳을 운영하는 소규모 브랜드가 2호점을 어디에 내면 좋을지 공개 데이터로 분석했습니다. 핵심 지표는 새 매장이 평균적으로 가져갈 몫인 점포당 매출로 정했습니다. 수요, 경쟁, 비용, 지속성 네 축으로 가설 6개를 세우고 판정 기준은 데이터를 보기 전에 정했습니다.
+서울에서 직장인 대상 테이크아웃 카페를 하나 운영하는 작은 브랜드가 2호점을 어디에 내면 좋을지 공개 데이터로 분석한 프로젝트입니다. 서울시 상권분석서비스 데이터 5년 반 치를 PostgreSQL에 넣고, 수요, 경쟁, 비용, 지속성 네 가지 관점에서 가설 6개를 세워 검증했습니다. 결론이 데이터 처리 방식에 따라 달라지지 않는지도 처리 방식을 바꿔 다시 확인했습니다.
 
-원자료 7종을 PostgreSQL에 넣고 SQL로 정제와 결합을 했습니다. 데이터를 다루며 발견한 문제 13건은 원인을 확인한 뒤 처리 방법을 정했습니다. 모든 가설은 처리 방법을 바꿔 다시 돌려서 결론이 유지되는지 확인했습니다. 그 결과 직장인구, 지하철역, 발달상권이 점포당 매출과 관계가 있었고 카페가 많은 상권일수록 오히려 점포당 매출이 높았습니다.
+직장인이 많고 지하철역이 있는 상권일수록 점포당 매출이 높았고, 예상과 달리 카페가 많은 상권도 점포당 매출이 높았습니다. 이 결과를 기준으로 1,058개 상권을 단계별로 좁혀서 대형 프랜차이즈가 적은 을지로3가역, 강남구청역, 서초역 세 곳을 후보로 제안했습니다.
 
-검증 결과를 근거로 1,058개 상권을 6단계 기준으로 좁혀 을지로3가역, 강남구청역, 서초역 3곳을 후보로 제안했습니다. 대형 프랜차이즈와의 정면 경쟁을 피하도록 프랜차이즈 비중이 낮은 상권을 골랐습니다. 매장별 매출이 없는 한계는 현장 조사로 보완하자고 했습니다.
-
-### 2. Google SERP 커뮤니티 서비스 마케팅 분석 (홍콩)
-
-[프로젝트 보기](https://github.com/baebokchii/google_serp_marketing)
-
-홍콩 사이쿵구 커뮤니티센터(SKDCC)가 운영하는 세 가지 서비스(노인 서비스, 비중국어권 학생 지원 서비스, 특수 교육)의 구글 검색 노출을 개선하기 위해 진행한 프로젝트입니다.
-
-광고 집행에서 끝내지 않고 검색 의도 기반 키워드 설계, 광고 카피 A/B 테스트, 캠페인 성과 분석을 하나의 루프로 연결해서 진행했습니다. 분석에는 Google Ads 캠페인 데이터(노출수, 클릭수, CTR, 비용, 키워드/광고그룹별 지표)와 검색 노출 결과를 사용했습니다.
-
-**핵심 결과**
-- 서비스 유형별로 CTR 차이가 뚜렷하게 나타났습니다.
-- SEN 관련 키워드와 광고 카피가 상대적으로 높은 참여율을 보였습니다.
-- ADHD처럼 문제를 이미 인지한 상태에서 검색하는 키워드는 짧은 테스트 기간에도 강한 CTR을 기록했습니다.
-- 중국어와 영어 광고 간 반응 패턴이 서로 다르게 나타났습니다.
-
-자세한 분석 내용은 [insights.md](https://github.com/baebokchii/google_serp_marketing/blob/main/insights.md)에서 확인할 수 있습니다.
-
-### 3. 러닝 기록 자동화 대시보드
+### 2. 러닝 기록 자동화 대시보드
 
 [프로젝트 보기](https://github.com/baebokchii/RunningLog), [대시보드 보기](https://public.tableau.com/views/RunningLogDashboard/RunningLog)
 
-애플워치에 쌓인 개인 러닝 기록을 구글 시트와 Tableau 대시보드로 자동 업데이트하는 개인 데이터 파이프라인을 구축했습니다.
+애플워치에 쌓이는 제 러닝 기록이 Tableau 대시보드에 자동으로 반영되게 만든 개인 프로젝트입니다. 러닝이 끝나고 피트니스 앱 화면을 캡처해서 보내면, 맥이 이미지에서 거리, 시간, 페이스, 심박을 읽어 구글 시트에 새 기록만 추가합니다. Tableau는 이 시트를 하루에 한 번 불러와 대시보드를 갱신합니다.
 
-아이폰 건강 앱에서 내보낸 기록을 launchd가 감지하면 Python 스크립트가 데이터를 정리하고, 구글 시트에 없는 기록만 골라서 업로드합니다. Tableau Public이 구글 시트를 하루 한 번 동기화하는 구조로, 수집부터 시각화까지 전 과정을 직접 설계하고 자동화했습니다.
+처음에는 건강 앱 데이터를 통째로 내보내는 방식이라 한 번 업데이트에 3분쯤 걸렸는데, 스크린샷 방식으로 바꿔서 10초로 줄였습니다. 대시보드에서는 제가 얼마나 꾸준히 뛰었는지, 페이스가 얼마나 좋아졌는지를 볼 수 있습니다.
+
+### 3. 랜덤 여행 챌린지 AI 에이전트
+
+[프로젝트 보기](https://github.com/baebokchii/kaggle_ai_agent_project)
+
+여행 기간만 고르면 국내 여행지 한 곳을 랜덤으로 뽑고, AI 에이전트들이 검색으로 명소, 맛집, 교통을 조사해서 시간대별 일정과 예산까지 짜 주는 웹 서비스입니다. Kaggle AI 에이전트 과정의 캡스톤으로 만든 여행 플래너를 Google ADK와 Gemini로 다시 만들었습니다.
+
+리서치 에이전트 세 개가 동시에 검색하고, 일정을 쓰면 검수 에이전트가 점검해서 문제가 있으면 고치는 구조입니다. 여행지 추첨이나 예산 합계처럼 틀리면 안 되는 부분은 LLM이 아니라 코드로 처리했습니다. 평가 지표를 따로 만들어 측정하면서 개선했고, 품질 점수는 떨어뜨리지 않으면서 응답 시간은 약 14%, 토큰 사용량은 약 26% 줄였습니다.
+
+### 4. Google SERP 커뮤니티 서비스 마케팅 분석 (홍콩)
+
+[프로젝트 보기](https://github.com/baebokchii/google_serp_marketing), [분석 내용](https://github.com/baebokchii/google_serp_marketing/blob/main/insights.md)
+
+홍콩 사이쿵 지역 커뮤니티센터가 운영하는 노인 서비스, 비중국어권 학생 지원, 특수교육 세 가지 서비스가 구글 검색에서 더 잘 보이도록 Google Ads 캠페인을 설계하고 분석한 프로젝트입니다. 사람들이 어떤 의도로 검색하는지를 기준으로 키워드를 짜고, 광고 문구는 A/B 테스트로 비교했습니다. 그다음 키워드와 광고그룹별로 노출수, 클릭수, 클릭률, 비용을 분석해 캠페인에 다시 반영했습니다.
+
+특수교육 관련 키워드와 광고 문구의 반응이 좋은 편이었고, 특히 ADHD처럼 이미 문제를 알고 검색하는 키워드는 짧은 기간에도 클릭률이 높았습니다. 중국어 광고와 영어 광고는 반응 패턴이 서로 달랐습니다.
 
 ---
 
