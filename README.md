@@ -59,9 +59,3 @@
 BBA in Management, BBA in Information Systems (Double Major), Class of 2025
 
 경영학 학사, 정보시스템 학사 (복수 전공), 2025년 1월 졸업
-
----
-
-## Contact
-
-[Email](mailto:alexbaehj@gmail.com), [LinkedIn](https://linkedin.com/in/hjbae01/)
